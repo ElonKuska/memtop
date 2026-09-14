@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="card_bg">#2C2624</color>
+    <color name="card_stroke">#4E342E</color>
+    <color name="nav_bg">#211D1B</color>
+</resources>

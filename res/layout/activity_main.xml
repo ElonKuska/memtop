@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MemTop"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary" />
+    </LinearLayout>
+
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar"
+        android:layout_above="@+id/navbar">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/card_procs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_bg"
+                    android:elevation="10dp"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Топ памяти"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/colorPrimary"
+                        android:paddingBottom="2dp" />
+
+                    <TextView
+                        android:id="@+id/mem_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="— / — МБ"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:paddingBottom="4dp" />
+
+                    <ProgressBar
+                        android:id="@+id/mem_bar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="12dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/proc_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="скан…"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:paddingBottom="8dp" />
+
+                    <LinearLayout
+                        android:id="@+id/proc_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/card_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_bg"
+                    android:elevation="10dp"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Тема"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/colorPrimary"
+                        android:paddingBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+                            <Button android:id="@+id/dot_espresso" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_espresso" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_indigo" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_indigo" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_forest" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_forest" android:text="" android:stateListAnimator="@null" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+                            <Button android:id="@+id/dot_sakura" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_sakura" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_ocean" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_ocean" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_sunset" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_sunset" android:text="" android:stateListAnimator="@null" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+                            <Button android:id="@+id/dot_grape" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_grape" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_mono" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_mono" android:text="" android:stateListAnimator="@null" />
+                            <Button android:id="@+id/dot_lime" android:layout_width="48dp" android:layout_height="48dp" android:layout_margin="6dp" android:background="@drawable/dot_lime" android:text="" android:stateListAnimator="@null" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/chip_system"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/chip_off"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:text="Система"
+                            android:textSize="13sp"
+                            android:stateListAnimator="@null" />
+                        <Button
+                            android:id="@+id/chip_light"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/chip_off"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:text="Светлая"
+                            android:textSize="13sp"
+                            android:stateListAnimator="@null" />
+                        <Button
+                            android:id="@+id/chip_dark"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/chip_off"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:text="Тёмная"
+                            android:textSize="13sp"
+                            android:stateListAnimator="@null" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_bg"
+                    android:elevation="10dp"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="О приложении"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/colorPrimary"
+                        android:paddingBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MemTop — сочный топ процессов по памяти. Нужен root."
+                        android:textSize="13sp"
+                        android:textColor="?android:attr/textColorPrimary" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="12dp">
+
+        <FrameLayout
+            android:id="@+id/nav_pill_outer"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/nav_pill"
+            android:elevation="8dp">
+
+            <View
+                android:id="@+id/nav_indicator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@drawable/chip_on" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/nav_btns"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:text="⌂"
+                    android:textSize="24sp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:stateListAnimator="@null" />
+                <Button
+                    android:id="@+id/nav_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:text="⚙"
+                    android:textSize="20sp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

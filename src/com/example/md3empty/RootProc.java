@@ -1,0 +1,147 @@
+package com.example.md3empty;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+// Рут-скан через один вызов su: быстро (~100-300мс на 782 процесса).
+// Строка формата: pid|pkg|rssKb|pssKb  (pss=-1 если не сняли)
+// 1) fast: ps -A -o PID,NAME,RSS,CMDLINE — мгновенный список + RSS
+// 2) full: bulk smaps_rollup loop — точный PSS поверх (один su-вызов)
+public class RootProc {
+
+    public static class Row {
+        public int pid;
+        public String pkg;   // пакет / команда
+        public long rssKb;
+        public long pssKb;   // -1 = нет данных
+        public Row(int pid, String pkg, long rssKb, long pssKb) {
+            this.pid = pid; this.pkg = pkg; this.rssKb = rssKb; this.pssKb = pssKb;
+        }
+        public long bestKb() { return pssKb >= 0 ? pssKb : rssKb; }
+        public String flat() { return pid + "|" + pkg + "|" + rssKb + "|" + pssKb; }
+    }
+
+    private static String exec(String cmd, long timeoutMs) {
+        try {
+            Process p = Runtime.getRuntime().exec(new String[]{"su", "-c", cmd});
+            StringBuilder sb = new StringBuilder(1 << 16);
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            char[] buf = new char[8192];
+            long end = System.currentTimeMillis() + timeoutMs;
+            int n;
+            while ((n = br.read(buf)) > 0) {
+                sb.append(buf, 0, n);
+                if (System.currentTimeMillis() > end) break;
+            }
+            try { p.waitFor(); } catch (Exception ignored) {}
+            try { p.destroy(); } catch (Exception ignored) {}
+            return sb.toString();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean hasRoot() {
+        String out = exec("id", 3000);
+        return out != null && out.contains("uid=0");
+    }
+
+    // Память без натива: прямо /proc/meminfo (читается без рута), запас — через su.
+    // Возвращает [totalKb, availKb, usedKb] или null.
+    public static long[] memKb() {
+        long[] m = parseMeminfo(readFile("/proc/meminfo"));
+        if (m != null) return m;
+        String out = exec("cat /proc/meminfo", 4000);
+        return parseMeminfo(out);
+    }
+
+    private static String readFile(String path) {
+        try {
+            java.io.FileInputStream fis = new java.io.FileInputStream(path);
+            byte[] buf = new byte[4096];
+            int n = fis.read(buf);
+            fis.close();
+            if (n > 0) return new String(buf, 0, n);
+        } catch (Exception ignored) {}
+        return null;
+    }
+
+    private static long[] parseMeminfo(String txt) {
+        if (txt == null) return null;
+        long total = -1, avail = -1;
+        String[] lines = txt.split("\n");
+        for (String ln : lines) {
+            try {
+                if (ln.startsWith("MemTotal:")) total = Long.parseLong(ln.replaceAll("[^0-9]", " ").trim().split("\\s+")[0]);
+                else if (ln.startsWith("MemAvailable:")) avail = Long.parseLong(ln.replaceAll("[^0-9]", " ").trim().split("\\s+")[0]);
+            } catch (Exception ignored) {}
+            if (total > 0 && avail >= 0) break;
+        }
+        if (total <= 0) return null;
+        if (avail < 0) avail = 0;
+        return new long[]{total, avail, total - avail};
+    }
+
+    // Быстрый скан: один su ps. Возвращает отсортированные по RSS desc.
+    public static List<Row> fastScan() {
+        String out = exec("ps -A -o PID,NAME,RSS,CMDLINE", 8000);
+        if (out == null || out.length() < 10) return null;
+        List<Row> list = new ArrayList<>(700);
+        String[] lines = out.split("\n");
+        for (int i = 1; i < lines.length; i++) {
+            String ln = lines[i].trim();
+            if (ln.isEmpty()) continue;
+            // PID NAME RSS CMDLINE...
+            String[] t = ln.split("\\s+", 4);
+            if (t.length < 3) continue;
+            try {
+                int pid = Integer.parseInt(t[0]);
+                long rss = Long.parseLong(t[2]);
+                String cmd = t.length >= 4 ? t[3].trim() : (t.length >= 2 ? t[1] : "?");
+                // cmdline вида "com.telegram.messenger" или "/system/bin/init ..." — берём 1й токен
+                int sp = cmd.indexOf(' ');
+                String pkg = sp > 0 ? cmd.substring(0, sp) : cmd;
+                if (pkg.isEmpty()) pkg = t[1];
+                if (pkg.startsWith("/")) {
+                    int sl = pkg.lastIndexOf('/');
+                    pkg = sl >= 0 ? pkg.substring(sl + 1) : pkg;
+                }
+                list.add(new Row(pid, pkg, rss, -1));
+            } catch (Exception ignored) {}
+        }
+        Collections.sort(list, (a, b) -> Long.compare(b.rssKb, a.rssKb));
+        return list;
+    }
+
+    // Точный PSS одним su-вызовом: цикл по /proc, grep Pss. ~0.3-0.6с.
+    // Возвращает pid->pss map через список "pid pss".
+    public static void fillPss(List<Row> rows) {
+        if (rows == null || rows.isEmpty()) return;
+        StringBuilder pids = new StringBuilder(rows.size() * 7);
+        for (Row r : rows) pids.append(r.pid).append(' ');
+        String out = exec(
+            "for p in " + pids + "; do v=$(grep -m1 '^Pss:' /proc/$p/smaps_rollup 2>/dev/null); echo \"$p ${v#Pss:}\"; done",
+            12000);
+        if (out == null) return;
+        String[] lines = out.split("\n");
+        for (String ln : lines) {
+            try {
+                ln = ln.trim();
+                if (ln.isEmpty()) continue;
+                int sp = ln.indexOf(' ');
+                int pid = Integer.parseInt(sp > 0 ? ln.substring(0, sp) : ln);
+                String rest = sp > 0 ? ln.substring(sp + 1).trim().split("\\s+")[0] : "";
+                long pss = rest.isEmpty() ? -1 : Long.parseLong(rest);
+                if (pss >= 0) {
+                    for (Row r : rows) {
+                        if (r.pid == pid) { r.pssKb = pss; break; }
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+        Collections.sort(rows, (a, b) -> Long.compare(b.bestKb(), a.bestKb()));
+    }
+}

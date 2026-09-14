@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ESPRESSO (как в tg-ws-proxy) -->
+    <style name="Theme.MD3Empty.Espresso.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#6D4C41</item>
+        <item name="android:colorPrimaryDark">#D7CCC8</item>
+        <item name="android:colorAccent">#6D4C41</item>
+        <item name="android:colorBackground">#FFFBF7</item>
+        <item name="android:windowBackground">#FFFBF7</item>
+        <item name="android:textColorPrimary">#1C1B1A</item>
+        <item name="android:colorControlHighlight">#406D4C41</item>
+        <item name="android:statusBarColor">#FFFBF7</item>
+        <item name="android:navigationBarColor">#FFFBF7</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Espresso.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#D7CCC8</item>
+        <item name="android:colorPrimaryDark">#5D4037</item>
+        <item name="android:colorAccent">#D7CCC8</item>
+        <item name="android:colorBackground">#1A1614</item>
+        <item name="android:windowBackground">#1A1614</item>
+        <item name="android:textColorPrimary">#EDE0D4</item>
+        <item name="android:colorControlHighlight">#40D7CCC8</item>
+        <item name="android:statusBarColor">#1A1614</item>
+        <item name="android:navigationBarColor">#1A1614</item>
+    </style>
+    <!-- INDIGO -->
+    <style name="Theme.MD3Empty.Indigo.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#5B588D</item>
+        <item name="android:colorPrimaryDark">#E2DFFF</item>
+        <item name="android:colorAccent">#5B588D</item>
+        <item name="android:colorBackground">#FBF8FF</item>
+        <item name="android:windowBackground">#FBF8FF</item>
+        <item name="android:textColorPrimary">#1B1B1F</item>
+        <item name="android:colorControlHighlight">#405B588D</item>
+        <item name="android:statusBarColor">#FBF8FF</item>
+        <item name="android:navigationBarColor">#FBF8FF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Indigo.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#C4C0FF</item>
+        <item name="android:colorPrimaryDark">#434073</item>
+        <item name="android:colorAccent">#C4C0FF</item>
+        <item name="android:colorBackground">#131316</item>
+        <item name="android:windowBackground">#131316</item>
+        <item name="android:textColorPrimary">#E4E1E6</item>
+        <item name="android:colorControlHighlight">#40C4C0FF</item>
+        <item name="android:statusBarColor">#131316</item>
+        <item name="android:navigationBarColor">#131316</item>
+    </style>
+    <!-- FOREST -->
+    <style name="Theme.MD3Empty.Forest.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#4C6B54</item>
+        <item name="android:colorPrimaryDark">#D3E7D6</item>
+        <item name="android:colorAccent">#4C6B54</item>
+        <item name="android:colorBackground">#FCF8FF</item>
+        <item name="android:windowBackground">#FCF8FF</item>
+        <item name="android:textColorPrimary">#1D1B20</item>
+        <item name="android:colorControlHighlight">#404C6B54</item>
+        <item name="android:statusBarColor">#FCF8FF</item>
+        <item name="android:navigationBarColor">#FCF8FF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Forest.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#B9D9BE</item>
+        <item name="android:colorPrimaryDark">#33463A</item>
+        <item name="android:colorAccent">#B9D9BE</item>
+        <item name="android:colorBackground">#141318</item>
+        <item name="android:windowBackground">#141318</item>
+        <item name="android:textColorPrimary">#E6E1E5</item>
+        <item name="android:colorControlHighlight">#40B9D9BE</item>
+        <item name="android:statusBarColor">#141318</item>
+        <item name="android:navigationBarColor">#141318</item>
+    </style>
+
+    <!-- SAKURA -->
+    <style name="Theme.MD3Empty.Sakura.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#8B3A5B</item>
+        <item name="android:colorPrimaryDark">#FFD9E2</item>
+        <item name="android:colorAccent">#8B3A5B</item>
+        <item name="android:colorBackground">#FFF8F7</item>
+        <item name="android:windowBackground">#FFF8F7</item>
+        <item name="android:textColorPrimary">#221114</item>
+        <item name="android:colorControlHighlight">#408B3A5B</item>
+        <item name="android:statusBarColor">#FFF8F7</item>
+        <item name="android:navigationBarColor">#FFF8F7</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Sakura.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#FFB1C8</item>
+        <item name="android:colorPrimaryDark">#633B48</item>
+        <item name="android:colorAccent">#FFB1C8</item>
+        <item name="android:colorBackground">#1E1216</item>
+        <item name="android:windowBackground">#1E1216</item>
+        <item name="android:textColorPrimary">#F5E0E4</item>
+        <item name="android:colorControlHighlight">#40FFB1C8</item>
+        <item name="android:statusBarColor">#1E1216</item>
+        <item name="android:navigationBarColor">#1E1216</item>
+    </style>
+    <!-- OCEAN -->
+    <style name="Theme.MD3Empty.Ocean.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#2F6B9A</item>
+        <item name="android:colorPrimaryDark">#CDE5FF</item>
+        <item name="android:colorAccent">#2F6B9A</item>
+        <item name="android:colorBackground">#F7FAFF</item>
+        <item name="android:windowBackground">#F7FAFF</item>
+        <item name="android:textColorPrimary">#191C1E</item>
+        <item name="android:colorControlHighlight">#402F6B9A</item>
+        <item name="android:statusBarColor">#F7FAFF</item>
+        <item name="android:navigationBarColor">#F7FAFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Ocean.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#A4CCF5</item>
+        <item name="android:colorPrimaryDark">#27405C</item>
+        <item name="android:colorAccent">#A4CCF5</item>
+        <item name="android:colorBackground">#101418</item>
+        <item name="android:windowBackground">#101418</item>
+        <item name="android:textColorPrimary">#E1E3E5</item>
+        <item name="android:colorControlHighlight">#40A4CCF5</item>
+        <item name="android:statusBarColor">#101418</item>
+        <item name="android:navigationBarColor">#101418</item>
+    </style>
+    <!-- SUNSET -->
+    <style name="Theme.MD3Empty.Sunset.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#9A4A1F</item>
+        <item name="android:colorPrimaryDark">#FFDBCA</item>
+        <item name="android:colorAccent">#9A4A1F</item>
+        <item name="android:colorBackground">#FFF8F4</item>
+        <item name="android:windowBackground">#FFF8F4</item>
+        <item name="android:textColorPrimary">#201A17</item>
+        <item name="android:colorControlHighlight">#409A4A1F</item>
+        <item name="android:statusBarColor">#FFF8F4</item>
+        <item name="android:navigationBarColor">#FFF8F4</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Sunset.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#FFB68F</item>
+        <item name="android:colorPrimaryDark">#5C3A28</item>
+        <item name="android:colorAccent">#FFB68F</item>
+        <item name="android:colorBackground">#1D120C</item>
+        <item name="android:windowBackground">#1D120C</item>
+        <item name="android:textColorPrimary">#F2DFD1</item>
+        <item name="android:colorControlHighlight">#40FFB68F</item>
+        <item name="android:statusBarColor">#1D120C</item>
+        <item name="android:navigationBarColor">#1D120C</item>
+    </style>
+    <!-- GRAPE -->
+    <style name="Theme.MD3Empty.Grape.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#6A4FA3</item>
+        <item name="android:colorPrimaryDark">#E6DEFF</item>
+        <item name="android:colorAccent">#6A4FA3</item>
+        <item name="android:colorBackground">#FAF7FF</item>
+        <item name="android:windowBackground">#FAF7FF</item>
+        <item name="android:textColorPrimary">#1C1B1F</item>
+        <item name="android:colorControlHighlight">#406A4FA3</item>
+        <item name="android:statusBarColor">#FAF7FF</item>
+        <item name="android:navigationBarColor">#FAF7FF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Grape.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#CDB6FF</item>
+        <item name="android:colorPrimaryDark">#443673</item>
+        <item name="android:colorAccent">#CDB6FF</item>
+        <item name="android:colorBackground">#17131F</item>
+        <item name="android:windowBackground">#17131F</item>
+        <item name="android:textColorPrimary">#E7E0EB</item>
+        <item name="android:colorControlHighlight">#40CDB6FF</item>
+        <item name="android:statusBarColor">#17131F</item>
+        <item name="android:navigationBarColor">#17131F</item>
+    </style>
+    <!-- MONO -->
+    <style name="Theme.MD3Empty.Mono.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#444444</item>
+        <item name="android:colorPrimaryDark">#E2E2E2</item>
+        <item name="android:colorAccent">#444444</item>
+        <item name="android:colorBackground">#FAFAFA</item>
+        <item name="android:windowBackground">#FAFAFA</item>
+        <item name="android:textColorPrimary">#1A1A1A</item>
+        <item name="android:colorControlHighlight">#40444444</item>
+        <item name="android:statusBarColor">#FAFAFA</item>
+        <item name="android:navigationBarColor">#FAFAFA</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Mono.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#CFCFCF</item>
+        <item name="android:colorPrimaryDark">#3A3A3A</item>
+        <item name="android:colorAccent">#CFCFCF</item>
+        <item name="android:colorBackground">#121212</item>
+        <item name="android:windowBackground">#121212</item>
+        <item name="android:textColorPrimary">#E5E5E5</item>
+        <item name="android:colorControlHighlight">#40CFCFCF</item>
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:navigationBarColor">#121212</item>
+    </style>
+    <!-- LIME -->
+    <style name="Theme.MD3Empty.Lime.Light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#4A6627</item>
+        <item name="android:colorPrimaryDark">#D3E8A9</item>
+        <item name="android:colorAccent">#4A6627</item>
+        <item name="android:colorBackground">#FAFFF2</item>
+        <item name="android:windowBackground">#FAFFF2</item>
+        <item name="android:textColorPrimary">#1A1C14</item>
+        <item name="android:colorControlHighlight">#404A6627</item>
+        <item name="android:statusBarColor">#FAFFF2</item>
+        <item name="android:navigationBarColor">#FAFFF2</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.MD3Empty.Lime.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#B9D17A</item>
+        <item name="android:colorPrimaryDark">#35450F</item>
+        <item name="android:colorAccent">#B9D17A</item>
+        <item name="android:colorBackground">#12160D</item>
+        <item name="android:windowBackground">#12160D</item>
+        <item name="android:textColorPrimary">#E3E6D4</item>
+        <item name="android:colorControlHighlight">#40B9D17A</item>
+        <item name="android:statusBarColor">#12160D</item>
+        <item name="android:navigationBarColor">#12160D</item>
+    </style>
+
+    <!-- дефолт для манифеста -->
+    <style name="Theme.MD3Empty" parent="Theme.MD3Empty.Espresso.Dark" />
+</resources>

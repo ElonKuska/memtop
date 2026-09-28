@@ -360,15 +360,21 @@ public class MainActivity extends Activity {
             try { RootProc.fillPss(topRows); } catch (Exception ignored) {}
             if (!scanning) return;
             runOnUiThread(() -> {
-                for (int i = 0; i < topRows.size() && i < list.getChildCount(); i++) {
-                    RootProc.Row r = topRows.get(i);
+                java.util.Map<Integer, RootProc.Row> pssByPid = new java.util.HashMap<>();
+                for (RootProc.Row r : topRows) pssByPid.put(r.pid, r);
+                java.util.Map<Integer, String[]> cachedByPid = new java.util.HashMap<>();
+                for (String[] entry : fresh) cachedByPid.put(Integer.parseInt(entry[0]), entry);
+                for (int i = 0; i < list.getChildCount(); i++) {
                     android.view.View row = list.getChildAt(i);
-                    Object tag = row.getTag();
+                    Object pidTag = row.getTag(TAG_PID);
+                    if (!(pidTag instanceof Integer)) continue;
+                    RootProc.Row r = pssByPid.get((Integer) pidTag);
+                    if (r == null) continue;
                     String mb = (r.bestKb() / 1024) + " МБ";
-                    if (tag instanceof TextView) {
-                        ((TextView) tag).setText(mb);
-                    }
-                    if (i < fresh.size()) fresh.get(i)[3] = mb;
+                    Object tag = row.getTag();
+                    if (tag instanceof TextView) ((TextView) tag).setText(mb);
+                    String[] cached = cachedByPid.get(r.pid);
+                    if (cached != null) cached[3] = mb;
                 }
                 String done = topRows.size() + " / " + total + " • root+PSS";
                 cnt.setText(done);

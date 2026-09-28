@@ -378,7 +378,6 @@ public class MainActivity extends Activity {
                 scanning = false;
             });
         });
-        scanThread.start();
     }
 
     private void addProcRow(LinearLayout list, int pid, String title,
